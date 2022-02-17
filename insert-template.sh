@@ -16,5 +16,7 @@ template=$(
 
 if [[ -n $template ]] ; then
   rsync -r --exclude "_init.sh" "$template_dir/$template/" .
-  "$template_dir/$template/_init.sh"
+  if [[ -x "$template_dir/$template/_init.sh" ]] ; then
+    "$template_dir/$template/_init.sh"
+  fi
 fi
